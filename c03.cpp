@@ -24,31 +24,23 @@ Since an empty string reads the same forward and backward, it is a palindrome.
  */
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        for (int i = 0 ; i< s.size() ; i++){
-            if(!isalnum(s[i])){
-                s.erase(i,1);
-                i--;
-            }
-            
+    bool isPalindrome(long x) {
+        long temp = x;
+        long pal = 0;
+
+        if(x<0){
+            return false; 
         }
-       
-        cout << s << endl;
-        string rev(s.rbegin(), s.rend()) ;
+        while(temp>0){
+            long digit = temp % 10 ;
+            pal = pal*10 + digit ;
+            temp = temp/10 ;       
+        }
 
-
-         for(int i = 0 ; i <s.size() ; i++){
-            s[i] = tolower(s[i]) ;
-            rev[i] = tolower(rev[i]) ;
-         }
-
-        if(s == rev){
+        
+        if(pal == x){
             return true ;
-
         }
-        else{
-            return false;
-        }
-
+        return false ;
     }
 };
